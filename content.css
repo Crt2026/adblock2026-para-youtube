@@ -1,0 +1,622 @@
+/* ==========================================================================
+   ADBLOCK 2026 FOR YOUTUBE™ & UNIVERSAL WEB - COSMETIC FILTERING CSS
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. YOUTUBE SPECIFIC COSMETIC FILTERS
+   -------------------------------------------------------------------------- */
+
+
+/* Hide static search, feed, and sidebar ads */
+ytd-ad-slot-renderer,
+ytd-companion-ad-renderer,
+ytd-promoted-sparkles-web-renderer,
+ytd-promoted-video-renderer,
+ytd-statement-banner-renderer,
+ytd-banner-promo-renderer,
+ytd-display-ad-renderer,
+#ad-companion-slot,
+#masthead-ad,
+#player-ads,
+.ytd-ad-slot-renderer,
+.ytd-carousel-ad-renderer,
+ytd-in-feed-ad-layout-renderer,
+ytd-ad-break-service-renderer,
+ytd-promoted-sparkles-text-search-renderer {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Hide rich items and banner sections in feed that contain ads */
+ytd-rich-item-renderer:has(> #content > ytd-ad-slot-renderer),
+ytd-rich-item-renderer:has(> #content > ytd-in-feed-ad-layout-renderer),
+ytd-rich-section-renderer:has(> #content > ytd-statement-banner-renderer),
+ytd-rich-section-renderer:has(> #content > ytd-banner-promo-renderer),
+ytd-rich-section-renderer:has(> #content > ytd-ad-slot-renderer),
+ytd-rich-section-renderer:has(> #content > ytd-in-feed-ad-layout-renderer),
+ytd-rich-section-renderer:has(> #content > #masthead-ad) {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide video overlay ads & promotional banners (preserve skip buttons) */
+.ytp-ad-overlay-container,
+.ytp-ad-overlay-image,
+.ytp-ad-image-overlay,
+.ytp-ad-preview-container,
+.ytp-ad-text-overlay,
+.ytp-ad-message-container,
+.ytp-ad-action-interstitial,
+.ytp-ad-overlay-slot,
+.ytp-ad-simple-ad-badge,
+.ytp-ad-duration-remaining,
+.ytp-ad-hover-text-container,
+.ytp-ad-info-dialog-background,
+.ytp-ad-survey,
+.ytp-ad-feedback-dialog {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Keep the ad video itself off-screen while the player is in an ad state.
+   The ad handler still runs and can activate YouTube's skip control. */
+.html5-video-player.ad-showing video,
+.html5-video-player.ad-interrupting video,
+#movie_player.ad-showing video,
+#movie_player.ad-interrupting video {
+    visibility: hidden !important;
+}
+
+/* Ensure skip button container and buttons remain 100% visible and interactive */
+.ytp-ad-skip-button,
+.ytp-ad-skip-button-modern,
+.ytp-skip-ad-button,
+.ytp-skip-ad-button-modern,
+.ytp-ad-skip-button-container,
+.ytp-ad-skip-button-slot,
+.ytp-ad-skip-button-container *,
+.ytp-ad-skip-button-slot * {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 999999 !important;
+}
+
+/* Hide interstitial/overlay panel ads */
+ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-ads"],
+ytd-reel-player-overlay-renderer ytd-ad-slot-renderer {
+    display: none !important;
+}
+
+/* Hide anti-adblock dialog overlays and warning modals */
+tp-yt-paper-dialog:has(yt-playability-error-supported-renderers),
+tp-yt-paper-dialog:has(#yt-playability-error-supported-renderers),
+tp-yt-paper-dialog:has(ytd-enforcement-message-view-model),
+ytd-popup-container:has(ytd-enforcement-message-view-model),
+ytd-popup-container:has(yt-playability-error-supported-renderers),
+.yt-playability-error-supported-renderers,
+ytd-enforcement-message-view-model,
+ytd-mealbar-promo-renderer {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
+/* Eliminate blocking transparent backdrops from anti-adblock modals */
+tp-yt-paper-dialog:has(yt-playability-error-supported-renderers) ~ tp-yt-iron-overlay-backdrop,
+tp-yt-paper-dialog:has(ytd-enforcement-message-view-model) ~ tp-yt-iron-overlay-backdrop,
+ytd-popup-container:has(ytd-enforcement-message-view-model) tp-yt-iron-overlay-backdrop,
+ytd-popup-container:has(yt-playability-error-supported-renderers) tp-yt-iron-overlay-backdrop,
+tp-yt-iron-overlay-backdrop:not(.opened) {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* Ensure body, html, comments and main feed scrolling is never locked by YouTube scripts */
+html.no-scroll,
+body.no-scroll {
+    overflow: visible !important;
+}
+html.no-scroll {
+    overflow-y: scroll !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. UNIVERSAL WEB COSMETIC FILTERS (ALL WEBSITES)
+   -------------------------------------------------------------------------- */
+
+/* Standard Ad Classes, IDs & Containers (Excluding YouTube core elements) */
+.adsbygoogle,
+ins.adsbygoogle,
+.taboola-ad,
+.outbrain-ad,
+.criteo-ad,
+.mgid-ad,
+.revcontent-ad,
+.trc_rbox_container,
+.trc_related_container,
+.OUTBRAIN,
+.rc-item,
+.rc-widget,
+.ezoic-ad,
+.ez-ad,
+.mediavine-ad,
+.adthrive-ad,
+.raptive-ad,
+.playwire-ad,
+.connatix-ad,
+.primis-ad,
+.anyclip-widget,
+.vidoomy-container,
+.brid-ad,
+.aniview-ad,
+.pubmatic-ad,
+.rubicon-ad,
+.infolinks-ad,
+.chitika-ad,
+.adblade-ad,
+.buysellads-ad,
+.carbonads,
+#carbonads,
+amp-embed[type="adsense"],
+amp-ad,
+iframe[id^="google_ads_iframe"],
+iframe[src*="doubleclick.net"],
+iframe[src*="googlesyndication.com"],
+iframe[src*="adserver"],
+iframe[src*="adsystem"],
+iframe[src*="adtech"],
+iframe[src*="trafficjunky"],
+iframe[src*="exoclick"],
+iframe[src*="adsterra"],
+iframe[src*="propellerads"],
+iframe[src*="popads"],
+iframe[src*="popcash"],
+iframe[src*="monetag"],
+iframe[src*="yieldmo"],
+iframe[src*="smartadserver"],
+iframe[src*="taboola"],
+iframe[src*="outbrain"],
+iframe[src*="trafficstars"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Explicitly guarantee YouTube player, video elements, feed grid, and comments are never hidden */
+#movie_player,
+.html5-video-player,
+.html5-main-video,
+#player,
+#player-container,
+#player-container-outer,
+#player-container-inner,
+ytd-player,
+ytd-watch-flexy,
+ytd-watch-grid,
+ytd-app,
+ytd-page-manager,
+ytd-browse,
+ytd-two-column-browse-results-renderer,
+ytd-rich-grid-renderer,
+ytd-rich-grid-row,
+#contents,
+#grid-container,
+#primary,
+#secondary,
+#below,
+ytd-comments,
+#comments {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#movie_player video,
+.html5-video-player video {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Hide Anti-Adblock Warning Modals & Overlays Across the Web */
+div[class*="adblock-overlay"],
+div[id*="adblock-overlay"],
+div[class*="adblock-modal"],
+div[id*="adblock-modal"],
+div[class*="adblock-dialog"],
+div[id*="adblock-dialog"],
+div[class*="adblock-wall"],
+div[id*="adblock-wall"],
+div[class*="adblock-popup"],
+div[id*="adblock-popup"],
+div[class*="adblocker-overlay"],
+div[id*="adblocker-overlay"],
+div[class*="adblocker-modal"],
+div[id*="adblocker-modal"],
+div[class*="ad-blocker-notice"],
+div[id*="ad-blocker-notice"],
+div[class*="anti-adblock"],
+div[id*="anti-adblock"],
+.sp-message-open,
+.fba-modal,
+.fc-ab-root,
+.fc-dialog-container,
+.fc-dialog-overlay {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. YOUTUBE FEED RESTORE ASSISTANT STYLING
+   -------------------------------------------------------------------------- */
+.adblock-feed-restore-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 24px 0;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.adblock-restore-card {
+    background: linear-gradient(135deg, rgba(18, 18, 26, 0.95), rgba(28, 28, 42, 0.95));
+    border: 1px solid rgba(255, 0, 85, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 0, 85, 0.15);
+    border-radius: 16px;
+    padding: 24px 32px;
+    max-width: 650px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto', 'Inter', sans-serif;
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+}
+
+.adblock-restore-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ff0055;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.adblock-restore-subtitle {
+    font-size: 14px;
+    color: #a0a0b8;
+    margin-bottom: 20px;
+}
+
+.adblock-restore-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.adblock-restore-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.adblock-restore-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.adblock-restore-btn.primary {
+    background: linear-gradient(135deg, #ff0055, #ff5500);
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 0, 85, 0.4);
+}
+
+.adblock-restore-btn.primary:hover {
+    box-shadow: 0 6px 20px rgba(255, 0, 85, 0.6);
+    filter: brightness(1.1);
+}
+
+/* YouTube Upsell Suppression */
+ytd-mealbar-promo-renderer,
+yt-upsell-dialog-renderer,
+ytd-popup-container:has(ytd-mealbar-promo-renderer),
+tp-yt-paper-dialog:has(ytd-mealbar-promo-renderer) {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. YOUTUBE SHORTS FAST-FORWARD & REWIND CONTROLS (GAMER EDITION)
+   -------------------------------------------------------------------------- */
+
+.adblock-shorts-controller {
+    position: absolute;
+    bottom: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(15, 15, 25, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 0, 85, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 0, 85, 0.2);
+    border-radius: 30px;
+    padding: 6px 16px;
+    z-index: 99999;
+    user-select: none;
+    font-family: 'Roboto', 'Inter', sans-serif;
+    color: #ffffff;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.adblock-shorts-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.15s ease;
+}
+
+.adblock-shorts-btn:hover {
+    background: linear-gradient(135deg, #ff0055, #ff5500);
+    border-color: #ff0055;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+    transform: scale(1.05);
+}
+
+.adblock-shorts-btn:active {
+    transform: scale(0.95);
+}
+
+.adblock-shorts-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 120px;
+    height: 6px;
+    border-radius: 3px;
+
+    background: rgba(255, 255, 255, 0.25);
+    outline: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.adblock-shorts-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ff0055;
+    box-shadow: 0 0 8px #ff0055;
+    cursor: pointer;
+}
+
+.adblock-shorts-time {
+    font-size: 11px;
+    font-weight: 600;
+    color: #a0a0b8;
+    min-width: 65px;
+    text-align: center;
+}
+
+
+
+/* --------------------------------------------------------------------------
+   6. YOUTUBE PLAYER CONTROLS: 1080P HD & VOLUMEN ESTABLE (GAMER EDITION)
+   -------------------------------------------------------------------------- */
+
+/* Suppress intrusive injected buttons on player bar */
+.adblock-yt-quick-btn,
+.adblock-yt-quality-badge,
+#adblock-quick-stable-vol,
+#adblock-quick-quality-badge {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* Quick Stable Volume Button on YouTube Control Bar */
+.adblock-yt-quick-btn {
+    position: relative;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 36px !important;
+    height: 100% !important;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e0e0e0;
+    transition: color 0.2s ease, transform 0.15s ease;
+    vertical-align: top;
+    user-select: none;
+}
+
+.adblock-yt-quick-btn:hover {
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+.adblock-yt-quick-btn.active {
+    color: #00ff66 !important;
+}
+
+.adblock-yt-quick-btn.active svg {
+    filter: drop-shadow(0 0 6px rgba(0, 255, 102, 0.7));
+}
+
+.adblock-vol-indicator {
+    position: absolute;
+    bottom: 9px;
+    right: 7px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #666666;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.adblock-yt-quick-btn.active .adblock-vol-indicator {
+    background: #00ff66;
+    box-shadow: 0 0 6px #00ff66;
+}
+
+/* Quick Quality Badge Button on YouTube Control Bar */
+.adblock-yt-quality-badge {
+    position: relative;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 100% !important;
+    padding: 0 7px !important;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    vertical-align: top;
+    user-select: none;
+}
+
+.adblock-yt-quality-badge span {
+    font-family: 'Roboto', 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #00ff66;
+    background: rgba(0, 255, 102, 0.12);
+    border: 1px solid rgba(0, 255, 102, 0.4);
+    border-radius: 4px;
+    padding: 2px 6px;
+    box-shadow: 0 0 8px rgba(0, 255, 102, 0.2);
+    transition: all 0.2s ease;
+}
+
+.adblock-yt-quality-badge:hover span {
+    background: rgba(0, 255, 102, 0.25);
+    border-color: #00ff66;
+    box-shadow: 0 0 12px rgba(0, 255, 102, 0.5);
+    transform: scale(1.05);
+}
+
+/* On-Player Floating Toast Notification */
+.adblock-player-toast {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-15px);
+    background: rgba(10, 15, 20, 0.94);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 102, 0.6);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 255, 102, 0.3);
+    color: #ffffff;
+    font-family: 'Roboto', 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    padding: 8px 18px;
+    border-radius: 24px;
+    pointer-events: none;
+    z-index: 9999999;
+    opacity: 0;
+    transition: opacity 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.adblock-player-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Injected Stable Volume Item in YouTube Gear Settings Menu */
+.ytp-menuitem.adblock-injected-stable-vol {
+    display: flex !important;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ytp-menuitem.adblock-injected-stable-vol:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Injected 1080p Premium Item in YouTube Quality Submenu */
+.ytp-menuitem.adblock-injected-1080p-premium {
+    display: flex !important;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.ytp-menuitem.adblock-injected-1080p-premium:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.ytp-menuitem.adblock-injected-1080p-premium[aria-checked="true"] .ytp-menuitem-label {
+    color: #00ff66 !important;
+    font-weight: 700 !important;
+}
+
+.adblock-premium-tag {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    color: #00ff66 !important;
+    background: rgba(0, 255, 102, 0.15) !important;
+    border: 1px solid rgba(0, 255, 102, 0.4) !important;
+    border-radius: 4px !important;
+    padding: 1px 5px !important;
+    margin-left: 6px !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
